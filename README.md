@@ -15,7 +15,8 @@ How to play:
   * Visit [`localhost:4000`](http://localhost:4000) from 3 browser instances. 
   * In **1st** browser click **"Anchor Page"**, and 
   * On the **2nd and 3rd** browsers click **"Audience Page"**,
-  * On **Caller Page**, click on **Connect** then **Call**, now you can see the video of your cam also appears in **Callee Page**.
+  * On **Anchor Page**, click on **Broadcast**,
+  * On each of every **Audience Page**, click on **Watch**.
 
 Screen shoot:
 
