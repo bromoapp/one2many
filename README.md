@@ -1,6 +1,6 @@
 # One2many
 
-This is a simple **WebRTC** project, where you can broadcast a webcam video in using one browser (as an anchor) to many browsers (as an audience).
+This is a simple **WebRTC** project, where you can broadcast a webcam video in one browser (as an anchor) to many browsers (as an audience).
 This project is part of a continues learning on **WebRTC**
 
 To start this Phoenix app:
