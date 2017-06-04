@@ -1,0 +1,5 @@
+<div class="jumbotron">
+    <h2>WebRTC Broadcast Demo</h2>
+    <span class="col-lg-5"><%= link "Anchor Page", to: anchor_path(@conn, :index), class: "btn btn-primary", style: "width: 180px" %></span>
+    <span class="col-lg-5"><%= link "Audience Page", to: audience_path(@conn, :index), class: "btn btn-danger", style: "width: 180px" %></span>
+</div>

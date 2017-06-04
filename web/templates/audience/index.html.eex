@@ -1,0 +1,27 @@
+<div class="text-center">
+    <h1 id="audience">AUDIENCE PAGE</h1>
+    <div class="row">
+        <div class="col-sm-6 center-panel">
+            <video id="remoteVideo" autoplay></video>
+        </div>
+        <div class="col-sm-6 center-panel">
+            <button class="btn btn-danger mybtn" id="watch">Watch</button>
+        </div>
+    </div>
+</div>
+<style>
+video {
+    width: 320px;
+    height: 240px;
+    background-color: black
+}
+
+.center-panel {
+    text-align: center;
+}
+
+.mybtn {
+    width: 320px;
+    margin-bottom: 5px;
+}
+</style>
