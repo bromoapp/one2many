@@ -20,4 +20,4 @@ How to play:
 
 Screen shoot:
 
-<img src="https://cloud.githubusercontent.com/assets/21073705/26759236/d33f9a76-4922-11e7-93da-83a82d23d2d1.PNG" width="45%"></img> 
+<img src="https://cloud.githubusercontent.com/assets/21073705/26759542/9a4e0f9c-492a-11e7-8486-58971d5cc59b.PNG" width="90%"></img> 
