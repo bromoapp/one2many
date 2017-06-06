@@ -70,12 +70,15 @@ let anchor = {
                 })})
             }, anchor.onError)
         }
-        peerConnection.onicecandidate = function(event) {
+        peerConnection.onicecandidate = (event) => {
             if (event.candidate) {
                 channel.push("anchor_candidate", {to: user, body: JSON.stringify({
                     "candidate": event.candidate
                 })});
             }
+        }
+        peerConnection.oniceconnectionstatechange = (event) => {
+            console.log(">>> CONN STATE: ", peerConnection.iceConnectionState)
         }
         setTimeout(function() {
             peerConnection.addStream(localStream)

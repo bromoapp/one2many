@@ -15,19 +15,24 @@ defmodule One2many.RoomChannel do
         {:ok, socket}
     end
 
-    def handle_info("new_audience", socket) do
-        user = socket.assigns.user
-        Logger.info(">>> AUDIENCE JOIN: #{user}")
-        :ok = RoomManager.add_audience(%Member{name: user, socket: socket})
+    ##############################################################################
+    # Anchor's related functions
+    ##############################################################################
 
-        anchor = RoomManager.get_anchor()
+    def handle_info("new_anchor", socket) do
+        user = socket.assigns.user
+        Logger.info(">>> ANCHOR JOIN: #{user}")
+        :ok = RoomManager.put_anchor(%Member{name: user, socket: socket})
+
+        audiences = RoomManager.get_audiences()
         cond do
-            anchor == nil ->
-                Logger.info(">>> IGNORE NEW AUDIENCE")
+            audiences == [] ->
+                Logger.info(">>> AUDIENCES NONE")
                 :ignore
             true ->
-                Logger.info(">>> INFO NEW AUDIENCE TO ANCHOR")
-                push anchor.socket, "new_audience",  %{"user" => user}
+                Enum.each(audiences, fn(%Member{name: name}) ->
+                    push socket, "new_audience", %{"user" => name}
+                end)
         end
         {:noreply, socket}
     end
@@ -63,6 +68,27 @@ defmodule One2many.RoomChannel do
         {:noreply, socket}
     end
 
+    ##############################################################################
+    # Audience's related functions
+    ##############################################################################
+
+    def handle_info("new_audience", socket) do
+        user = socket.assigns.user
+        Logger.info(">>> AUDIENCE JOIN: #{user}")
+        :ok = RoomManager.add_audience(%Member{name: user, socket: socket})
+
+        anchor = RoomManager.get_anchor()
+        cond do
+            anchor == nil ->
+                Logger.info(">>> IGNORE NEW AUDIENCE")
+                :ignore
+            true ->
+                Logger.info(">>> INFO NEW AUDIENCE TO ANCHOR")
+                push anchor.socket, "new_audience",  %{"user" => user}
+        end
+        {:noreply, socket}
+    end
+
     def handle_in("audience_sdp", %{"body" => body}, socket) do
         anchor = RoomManager.get_anchor
         cond do
@@ -72,24 +98,6 @@ defmodule One2many.RoomChannel do
             true ->
                 Logger.info(">>> IGNORE SDP...")
                 :ignore
-        end
-        {:noreply, socket}
-    end
-
-    def handle_info("new_anchor", socket) do
-        user = socket.assigns.user
-        Logger.info(">>> ANCHOR JOIN: #{user}")
-        :ok = RoomManager.put_anchor(%Member{name: user, socket: socket})
-
-        audiences = RoomManager.get_audiences()
-        cond do
-            audiences == [] ->
-                Logger.info(">>> AUDIENCES NONE")
-                :ignore
-            true ->
-                Enum.each(audiences, fn(%Member{name: name}) ->
-                    push socket, "new_audience", %{"user" => name}
-                end)
         end
         {:noreply, socket}
     end
