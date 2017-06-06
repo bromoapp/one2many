@@ -14,7 +14,7 @@ defmodule One2many do
       supervisor(One2many.Endpoint, []),
       # Start your own worker by calling: One2many.Worker.start_link(arg1, arg2, arg3)
       # worker(One2many.Worker, [arg1, arg2, arg3]),
-      worker(One2many.RoomManager, [])
+      supervisor(One2many.RoomManager, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
