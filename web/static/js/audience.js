@@ -1,6 +1,5 @@
 let channel, remoteVideo, peerConnection, remoteStream
 let btnWatch, socket
-let count = 0
 
 let servers = {
     "iceServers" : [
