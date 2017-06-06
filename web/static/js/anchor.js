@@ -77,8 +77,10 @@ let anchor = {
                 })});
             }
         }
-        peerConnection.addStream(localStream)
-        peerConnection.createOffer(getLocalDescription, anchor.onError)        
+        setTimeout(function() {
+            peerConnection.addStream(localStream)
+            peerConnection.createOffer(getLocalDescription, anchor.onError)        
+        }, 2000);
     },
     onRemoteDescription(payload) {
         connections.forEach(function(x) {

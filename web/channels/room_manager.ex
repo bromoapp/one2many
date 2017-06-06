@@ -85,7 +85,6 @@ defmodule One2many.RoomManager do
                 [audience] = result
                 {:reply, audience, map}
         end
-        
     end
 
     def handle_call(:get_audiences, _from, map) do
