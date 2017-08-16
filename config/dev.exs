@@ -36,7 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :one2many, One2many.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "root",
+  username: "myapp",
   password: "something",
   database: "one2many_dev",
   hostname: "localhost",
