@@ -37,7 +37,7 @@ config :phoenix, :stacktrace_depth, 20
 config :one2many, One2many.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",
-  password: "admin",
+  password: "something",
   database: "one2many_dev",
   hostname: "localhost",
   pool_size: 10
